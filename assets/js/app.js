@@ -1,16 +1,16 @@
 const baseEndpoint = 'https://api.github.com';
 const usersEndpoint = `${baseEndpoint}/users`;
-const $n = document.querySelector('name');
-const $b = document.querySelector('#blog');
-const $l = document.querySelector('.location');
+const elementoName = document.querySelector('.name'); //Cambio nombre de variable y especificacion del selector
+const elementoBlog = document.querySelector('.blog'); //Cambio nombre de variable y especificacion del selector
+const elementoLocation = document.querySelector('.location'); //Cambio nombre de variable (hasta el momento esta variable no se usa)
 
-function displayUser(username) {
-  $n.textContent = 'cargando...';
+async function displayUser(username) { //Se agregó async a función que usa await
+  elementoName.textContent = 'cargando...'; //Se cambió nombre de variable
   const response = await fetch(`${usersEndpoint}/${username}`);
-  console.log(data);
-  $n.textContent = '${data.name}';
-  $b.textContent = '${data.blog}';
-  $l.textContent = '${data.location}';
+  console.log(response); //Se cambió la variable a mostrar en consola
+  elementoName.textContent = '${response.name}'; //Se cambió nombre de variable
+  elementoBlog.textContent = '${data.blog}'; //Se cambió nombre de variable
+  elementoLocation.textContent = '${data.location}'; //Se cambió nombre de variable
 }
 
 function handleError(err) {
